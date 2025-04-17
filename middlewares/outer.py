@@ -66,8 +66,8 @@ class ThirdOuterMiddleware(BaseMiddleware):
             event.__class__.__name__,
         )
 
-        result = await handler(event, data)
+        # result = await handler(event, data)
 
         logger.debug("Выходим из миддлвари  %s", __class__.__name__)
 
-        return result
+        # return result

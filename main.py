@@ -2,6 +2,7 @@ import asyncio
 import logging
 
 from aiogram import Bot, Dispatcher
+from aiogram.fsm.state import StatesGroup
 
 from config_data.config import Config, load_config
 from handlers.other import other_router
@@ -32,12 +33,17 @@ async def main() -> None:
     bot = Bot(token=config.tg_bot.token)
     dp = Dispatcher()
 
-    # Регистрируем роутеры в диспетчере
+    # Регистриуем роутеры в диспетчере
     dp.include_router(user_router)
     dp.include_router(other_router)
 
     # Здесь будем регистрировать миддлвари
-    # ...
+    dp.update.outer_middleware(FirstOuterMiddleware())
+    user_router.callback_query.outer_middleware(SecondOuterMiddleware())
+    other_router.message.outer_middleware(ThirdOuterMiddleware())
+    user_router.message.middleware(FirstInnerMiddleware())
+    user_router.callback_query.middleware(SecondInnerMiddleware())
+    other_router.message.middleware(ThirdInnerMiddleware())
 
     # Запускаем polling
     await dp.start_polling(bot)
