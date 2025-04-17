@@ -1,0 +1,24 @@
+[project]
+name = "tes"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Gitstick",email = "131869327+Puker228@users.noreply.github.com"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "aiogram (>=3.20.0.post0,<4.0.0)",
+    "environs (>=14.1.1,<15.0.0)"
+]
+
+[tool.poetry]
+
+[tool.poetry.group.dev.dependencies]
+black = "^25.1.0"
+isort = "^6.0.1"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
