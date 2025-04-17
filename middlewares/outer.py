@@ -13,18 +13,18 @@ class FirstOuterMiddleware(BaseMiddleware):
         self,
         handler: Callable[[TelegramObject, Dict[str, Any]], Awaitable[Any]],
         event: TelegramObject,
-        data: Dict[str, Any]
+        data: Dict[str, Any],
     ) -> Any:
 
         logger.debug(
-            'Вошли в миддлварь %s, тип события %s',
+            "Вошли в миддлварь %s, тип события %s",
             __class__.__name__,
-            event.__class__.__name__
+            event.__class__.__name__,
         )
 
         result = await handler(event, data)
 
-        logger.debug('Выходим из миддлвари  %s', __class__.__name__)
+        logger.debug("Выходим из миддлвари  %s", __class__.__name__)
 
         return result
 
@@ -35,18 +35,18 @@ class SecondOuterMiddleware(BaseMiddleware):
         self,
         handler: Callable[[TelegramObject, Dict[str, Any]], Awaitable[Any]],
         event: TelegramObject,
-        data: Dict[str, Any]
+        data: Dict[str, Any],
     ) -> Any:
 
         logger.debug(
-            'Вошли в миддлварь %s, тип события %s',
+            "Вошли в миддлварь %s, тип события %s",
             __class__.__name__,
-            event.__class__.__name__
+            event.__class__.__name__,
         )
 
         result = await handler(event, data)
 
-        logger.debug('Выходим из миддлвари  %s', __class__.__name__)
+        logger.debug("Выходим из миддлвари  %s", __class__.__name__)
 
         return result
 
@@ -57,17 +57,17 @@ class ThirdOuterMiddleware(BaseMiddleware):
         self,
         handler: Callable[[TelegramObject, Dict[str, Any]], Awaitable[Any]],
         event: TelegramObject,
-        data: Dict[str, Any]
+        data: Dict[str, Any],
     ) -> Any:
 
         logger.debug(
-            'Вошли в миддлварь %s, тип события %s',
+            "Вошли в миддлварь %s, тип события %s",
             __class__.__name__,
-            event.__class__.__name__
+            event.__class__.__name__,
         )
 
         result = await handler(event, data)
 
-        logger.debug('Выходим из миддлвари  %s', __class__.__name__)
+        logger.debug("Выходим из миддлвари  %s", __class__.__name__)
 
         return result

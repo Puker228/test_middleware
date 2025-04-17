@@ -2,25 +2,20 @@ import asyncio
 import logging
 
 from aiogram import Bot, Dispatcher
+
 from config_data.config import Config, load_config
 from handlers.other import other_router
 from handlers.user import user_router
-from middlewares.inner import (
-    FirstInnerMiddleware,
-    SecondInnerMiddleware,
-    ThirdInnerMiddleware,
-)
-from middlewares.outer import (
-    FirstOuterMiddleware,
-    SecondOuterMiddleware,
-    ThirdOuterMiddleware,
-)
+from middlewares.inner import (FirstInnerMiddleware, SecondInnerMiddleware,
+                               ThirdInnerMiddleware)
+from middlewares.outer import (FirstOuterMiddleware, SecondOuterMiddleware,
+                               ThirdOuterMiddleware)
 
 # Настраиваем базовую конфигурацию логирования
 logging.basicConfig(
     level=logging.DEBUG,
-    format='[%(asctime)s] #%(levelname)-8s %(filename)s:'
-           '%(lineno)d - %(name)s - %(message)s'
+    format="[%(asctime)s] #%(levelname)-8s %(filename)s:"
+    "%(lineno)d - %(name)s - %(message)s",
 )
 
 # Инициализируем логгер модуля
